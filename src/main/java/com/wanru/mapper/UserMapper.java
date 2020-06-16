@@ -1,19 +1,33 @@
 package com.wanru.mapper;
 
 import com.wanru.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import com.wanru.model.UserExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.session.RowBounds;
 
-/**
- * Created by FangWei on 2020-03-14.
- */
-@Mapper
 public interface UserMapper {
-    @Insert("insert into User (account_id,name,token,create_time,modified_time) values(#{account_id},#{name},#{token},#{create_time},#{modified_time})")
-    void insert(User user);
+    long countByExample(UserExample example);
 
-    @Select("select * from User where token=#{token}")
-    User findByToken(@Param("token") String token);
+    int deleteByExample(UserExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    List<User> selectByExampleWithRowbounds(UserExample example, RowBounds rowBounds);
+
+    List<User> selectByExample(UserExample example);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

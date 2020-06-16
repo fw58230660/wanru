@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/wanru.css"/>
+    <script src="/js/jquery-3.3.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <title>婉如社区</title>
+
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+
+        <div class="jumbotron" style="margin: 80px;">
+            <h1>出错啦!!!</h1>
+            <p th:text="${message}">程序员开小差了,请稍后再试:)</p>
+            <p><a class="btn btn-primary btn-lg" href="/index" role="button">回到主页</a></p>
+        </div>
+
+</body>
+</html>

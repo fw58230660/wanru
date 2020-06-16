@@ -1,70 +1,83 @@
 package com.wanru.model;
 
 public class User {
-  private Integer id;
-  private String account_id;
-  private String name;
-  private String token;
-  private Long create_time;
-  private Long modified_time;
+    private Integer id;
 
-  public Integer getId() {
-    return id;
-  }
+    private String name;
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+    private String token;
 
-  public String getAccount_id() {
-    return account_id;
-  }
+    private Long createTime;
 
-  public void setAccount_id(String account_id) {
-    this.account_id = account_id;
-  }
+    private Long modifiedTime;
 
-  public String getName() {
-    return name;
-  }
+    private String accountId;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    private String bio;
 
-  public String getToken() {
-    return token;
-  }
+    private String avatarUrl;
 
-  public void setToken(String token) {
-    this.token = token;
-  }
+    public Integer getId() {
+        return id;
+    }
 
-  public Long getCreate_time() {
-    return create_time;
-  }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-  public void setCreate_time(Long create_time) {
-    this.create_time = create_time;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public Long getModified_time() {
-    return modified_time;
-  }
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-  public void setModified_time(Long modified_time) {
-    this.modified_time = modified_time;
-  }
+    public String getToken() {
+        return token;
+    }
 
-  @Override
-  public String toString() {
-    return "User{" +
-            "id=" + id +
-            ", account_id='" + account_id + '\'' +
-            ", name='" + name + '\'' +
-            ", token='" + token + '\'' +
-            ", create_time=" + create_time +
-            ", modified_time=" + modified_time +
-            '}';
-  }
+    public void setToken(String token) {
+        this.token = token == null ? null : token.trim();
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(Long modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId == null ? null : accountId.trim();
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio == null ? null : bio.trim();
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl == null ? null : avatarUrl.trim();
+    }
 }

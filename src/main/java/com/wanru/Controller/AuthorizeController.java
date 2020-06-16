@@ -2,9 +2,9 @@ package com.wanru.Controller;
 
 import com.wanru.dto.AccessTokenDTO;
 import com.wanru.dto.GithubUser;
-import com.wanru.mapper.UserMapper;
 import com.wanru.model.User;
 import com.wanru.provider.GithubProvider;
+import com.wanru.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
@@ -31,7 +30,7 @@ public class AuthorizeController {
     private String redirectUri;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
@@ -51,16 +50,15 @@ public class AuthorizeController {
             String token = UUID.randomUUID().toString();
             user.setName(githubUser.getName());
             user.setToken(token);
-            user.setAccount_id(String.valueOf(githubUser.getId()));
-            user.setCreate_time(System.currentTimeMillis());
-            user.setModified_time(user.getCreate_time());
-            userMapper.insert(user);
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setAvatarUrl(githubUser.getAvatar_url());
+            userService.addOrUpdate(user);
             //放入cookie
             response.addCookie(new Cookie("token",token));
-            return "redirect:/";
+            return "redirect:/index";
         } else {
             //登录失败,返回到登录页面
-            return "redirect:/";
+            return "redirect:/index";
         }
 
     }
